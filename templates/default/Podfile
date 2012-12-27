@@ -1,0 +1,11 @@
+platform :ios, '5.0'
+
+pod 'RestKit', '~>  0.20.0pre'
+pod 'MBProgressHUD'
+pod 'SSToolkit'
+pod 'ShareKit', :podspec => 'ShareKit.podspec'
+pod 'QuickDialog', :podspec => 'QuickDialog.podspec'
+
+pod 'FlurrySDK'
+pod 'TestFlightSDK'
+pod 'CocoaLumberjack'

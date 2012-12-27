@@ -1,0 +1,24 @@
+//
+// Prefix header for all source files of the '__TESTING__' target in the '__TESTING__' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+#else
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <CoreServices/CoreServices.h>
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "__CLASS__PREFIX__Configuration.h"
+    #import "DDLog.h"
+#endif
