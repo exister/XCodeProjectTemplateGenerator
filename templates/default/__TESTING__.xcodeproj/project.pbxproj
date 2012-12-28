@@ -65,6 +65,7 @@
 		1867C7C7168B1F73006F623C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1867C800168B25C6006F623C /* __TESTING__Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "__TESTING__Local-Info.plist"; sourceTree = "<group>"; };
 		1867C816168B2622006F623C /* __TESTING__Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "__TESTING__Beta-Info.plist"; sourceTree = "<group>"; };
+		18880148168D97700086CD1A /* generate_documentation.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = generate_documentation.sh; sourceTree = SOURCE_ROOT; };
 		18DA8251168C2E2F007F507A /* __CLASS__PREFIX__Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = __CLASS__PREFIX__Configuration.h; path = Classes/__CLASS__PREFIX__Configuration.h; sourceTree = "<group>"; };
 		18DA825F168C4FCB007F507A /* __CLASS__PREFIX__BaseQuickDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = __CLASS__PREFIX__BaseQuickDialogController.h; path = Classes/BaseClasses/__CLASS__PREFIX__BaseQuickDialogController.h; sourceTree = "<group>"; };
 		18DA8260168C4FCB007F507A /* __CLASS__PREFIX__BaseQuickDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = __CLASS__PREFIX__BaseQuickDialogController.m; path = Classes/BaseClasses/__CLASS__PREFIX__BaseQuickDialogController.m; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		1867C78C168B1EA6006F623C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18880148168D97700086CD1A /* generate_documentation.sh */,
 				1867C78D168B1EA6006F623C /* __TESTING__-Info.plist */,
 				1867C800168B25C6006F623C /* __TESTING__Local-Info.plist */,
 				1867C816168B2622006F623C /* __TESTING__Beta-Info.plist */,
@@ -206,6 +208,7 @@
 				1867C77D168B1EA6006F623C /* Sources */,
 				1867C77E168B1EA6006F623C /* Frameworks */,
 				1867C77F168B1EA6006F623C /* Resources */,
+				18880146168D972B0086CD1A /* Generate documentation */,
 			);
 			buildRules = (
 			);
@@ -300,6 +303,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		18880146168D972B0086CD1A /* Generate documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate documentation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/generate_documentation.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
