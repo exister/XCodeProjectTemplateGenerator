@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182871D31692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182871D21692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.m */; };
+		182871D61692FEED00895A8D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182871D51692FEED00895A8D /* MapKit.framework */; };
 		1867C786168B1EA6006F623C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1867C785168B1EA6006F623C /* UIKit.framework */; };
 		1867C788168B1EA6006F623C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1867C787168B1EA6006F623C /* Foundation.framework */; };
 		1867C78A168B1EA6006F623C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1867C789168B1EA6006F623C /* CoreGraphics.framework */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182871D11692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = __CLASS_PREFIX__MapHelper.h; path = __TESTING__/Classes/Helpers/__CLASS_PREFIX__MapHelper.h; sourceTree = SOURCE_ROOT; };
+		182871D21692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = __CLASS_PREFIX__MapHelper.m; path = __TESTING__/Classes/Helpers/__CLASS_PREFIX__MapHelper.m; sourceTree = SOURCE_ROOT; };
+		182871D51692FEED00895A8D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1867C781168B1EA6006F623C /* __TESTING__.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = __TESTING__.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1867C785168B1EA6006F623C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1867C787168B1EA6006F623C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182871D61692FEED00895A8D /* MapKit.framework in Frameworks */,
 				1867C786168B1EA6006F623C /* UIKit.framework in Frameworks */,
 				1867C788168B1EA6006F623C /* Foundation.framework in Frameworks */,
 				1867C78A168B1EA6006F623C /* CoreGraphics.framework in Frameworks */,
@@ -119,6 +125,7 @@
 		1867C784168B1EA6006F623C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				182871D51692FEED00895A8D /* MapKit.framework */,
 				1867C785168B1EA6006F623C /* UIKit.framework */,
 				1867C787168B1EA6006F623C /* Foundation.framework */,
 				1867C789168B1EA6006F623C /* CoreGraphics.framework */,
@@ -182,6 +189,8 @@
 		18DA8252168C2F5D007F507A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				182871D11692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.h */,
+				182871D21692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.m */,
 			);
 			name = Helpers;
 			path = __TESTING__/Classes/Helpers;
@@ -330,6 +339,7 @@
 				1867C7A2168B1EA9006F623C /* __CLASS__PREFIX__ViewController.m in Sources */,
 				18DA8261168C4FCB007F507A /* __CLASS__PREFIX__BaseQuickDialogController.m in Sources */,
 				18DA8264168C500D007F507A /* __CLASS__PREFIX__BaseQuickDialogTableView.m in Sources */,
+				182871D31692FE2E00895A8D /* __CLASS_PREFIX__MapHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
