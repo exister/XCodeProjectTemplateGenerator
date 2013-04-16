@@ -19,6 +19,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
     #import "__CLASS__PREFIX__Configuration.h"
+    #import "CoreData+MagicalRecord.h"
     #import "DDLog.h"
 #endif

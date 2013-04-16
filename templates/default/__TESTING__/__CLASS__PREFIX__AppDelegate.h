@@ -4,4 +4,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)showSplashScreen;
+
+- (void)hideSplashScreen;
+
 @end

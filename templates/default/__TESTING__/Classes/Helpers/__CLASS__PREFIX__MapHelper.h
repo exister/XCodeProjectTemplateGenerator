@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@interface __CLASS_PREFIX__MapHelper : NSObject
+
+@interface __CLASS__PREFIX__MapHelper : NSObject
++ (NSUInteger)zoomLevelForPlaceType:(NSString *)placeType;
 
 + (void)setCenterCoordinate:(MKMapView *)mapToCenter centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated;
 
