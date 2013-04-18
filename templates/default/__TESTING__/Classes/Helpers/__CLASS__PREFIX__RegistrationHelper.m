@@ -9,8 +9,10 @@
 
 @implementation __CLASS__PREFIX__RegistrationHelper
 
+static NSString *cachedDeviceId = nil;
 static NSString *cachedAuthToken = nil;
 static NSString *cachedPushToken = nil;
+static NSNumber *cachedDeviceRegistered = nil;
 
 + (NSString *)authToken
 {
@@ -29,6 +31,20 @@ static NSString *cachedPushToken = nil;
 #endif
 }
 
++ (NSString *)deviceId
+{
+    if (cachedDeviceId == nil) {
+        cachedDeviceId = [SSKeychain passwordForService:k__CLASS__PREFIX__KeychainServiceName account:k__CLASS__PREFIX__UDDeviceId];
+    }
+    return cachedDeviceId;
+}
+
++ (void)setDeviceId:(NSString *)deviceID
+{
+    cachedDeviceId = deviceID;
+    [SSKeychain setPassword:deviceID forService:k__CLASS__PREFIX__KeychainServiceName account:k__CLASS__PREFIX__UDDeviceId];
+}
+
 + (BOOL)isAuthenticated
 {
     return cachedAuthToken != nil;
@@ -40,6 +56,20 @@ static NSString *cachedPushToken = nil;
         cachedPushToken = [[NSUserDefaults standardUserDefaults] stringForKey:k__CLASS__PREFIX__UDPushToken];
     }
     return cachedPushToken;
+}
+
++ (BOOL)deviceRegistered
+{
+    if (cachedDeviceRegistered == nil) {
+        cachedDeviceRegistered = [NSNumber numberWithBool:[[NSUserDefaults standardUserDefaults] boolForKey:k__CLASS__PREFIX__UDDeviceRegistered]];
+    }
+    return [cachedDeviceRegistered boolValue];
+}
+
++ (void)setDeviceRegistered:(BOOL)registered
+{
+    cachedDeviceRegistered = [NSNumber numberWithBool:registered];
+    [[NSUserDefaults standardUserDefaults] setBool:registered forKey:k__CLASS__PREFIX__UDDeviceRegistered];
 }
 
 @end

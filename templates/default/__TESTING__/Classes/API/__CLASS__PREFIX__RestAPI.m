@@ -179,4 +179,13 @@
     [self.client cancelAllOperationsForDelegate:delegate];
 }
 
+- (void)registerDeviceWithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                                 owner:(id)owner
+{
+    DDLogInfo(@"registerDeviceWithSuccessBlock");
+    NSMutableDictionary *params = [@{} mutableCopy];
+    [self makePOSTRequest:@"v1/device-registration/" params:params success:success failure:failure owner:owner];
+}
+
 @end

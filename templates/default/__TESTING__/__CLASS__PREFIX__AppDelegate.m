@@ -14,6 +14,7 @@
 #import "AJNotificationView.h"
 #import "Appirater.h"
 #import "NSString+SSToolkitAdditions.h"
+#import "__CLASS__PREFIX__RestAPI.h"
 #import "NSDate+__CLASS__PREFIX__TimeZone.h"
 //include JIRA and HockeyApp only for Beta and AppStore releases
 #ifndef LOCAL
@@ -47,9 +48,6 @@
         [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
     }
 #endif
-
-#define k__CLASS__PREFIX__SplashScreenJobDoneNotification @"k__CLASS__PREFIX__SplashScreenJobDoneNotification"
-#define k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification @"k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification"
 
 @interface __CLASS__PREFIX__AppDelegate ()
 - (void)initLoggers;
@@ -306,6 +304,12 @@
 {
     //load auth token from keychain to cache
     [__CLASS__PREFIX__RegistrationHelper authToken];
+
+    //generate device id
+    NSString *deviceId = [__CLASS__PREFIX__RegistrationHelper deviceId];
+    if (deviceId == nil) {
+        [__CLASS__PREFIX__RegistrationHelper setDeviceId:[NSString stringWithUUID]];
+    }
 }
 
 /**
@@ -425,7 +429,10 @@
     __weak __CLASS__PREFIX__AppDelegate *weakSelf = self;
     [UIView animateWithDuration:1.0
                      animations:^{weakSelf.splashScreenView.alpha = 0.0;}
-                     completion:^(BOOL finished){ [weakSelf.splashScreenView removeFromSuperview]; }];
+                     completion:^(BOOL finished){
+                         [weakSelf.splashScreenView removeFromSuperview];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__SplashScreenFinished object:nil];
+                     }];
 }
 
 /**
@@ -441,8 +448,20 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSplashScreenJobDone:) name:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSplashScreenAllJobsDone:) name:k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification object:nil];
 
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
+    //register device
+    [[__CLASS__PREFIX__RestAPI sharedInstance] registerDeviceWithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        DDLogInfo(@"Register device finished");
+        [__CLASS__PREFIX__RegistrationHelper setDeviceRegistered:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        DDLogError(@"Register device failed");
+        [__CLASS__PREFIX__RegistrationHelper setDeviceRegistered:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
+    }
+    owner:self];
 }
 
 /**

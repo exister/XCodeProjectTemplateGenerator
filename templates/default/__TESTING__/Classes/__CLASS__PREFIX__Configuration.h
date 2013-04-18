@@ -4,7 +4,9 @@
 extern int const ddLogLevel;
 
 #define k__CLASS__PREFIX__UDPushToken @"__CLASS__PREFIX__PushToken"
-#define k__CLASS__PREFIX__KeychainServiceName @"com.adwz.codriver"
+#define k__CLASS__PREFIX__KeychainServiceName @"__PACKAGE__"
+#define k__CLASS__PREFIX__UDDeviceId @"__CLASS__PREFIX__UDDeviceId"
+#define k__CLASS__PREFIX__UDDeviceRegistered @"__CLASS__PREFIX__UDDeviceRegistered"
 
 /**
 * JIRA
@@ -34,6 +36,9 @@ extern int const ddLogLevel;
 
 #define k__CLASS__PREFIX__ReachabilityChanged @"k__CLASS__PREFIX__ReachabilityChanged"
 #define k__CLASS__PREFIX__RegisteredForRemoteNotifications @"k__CLASS__PREFIX__RegisteredForRemoteNotifications"
+#define k__CLASS__PREFIX__SplashScreenJobDoneNotification @"k__CLASS__PREFIX__SplashScreenJobDoneNotification"
+#define k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification @"k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification"
+#define k__CLASS__PREFIX__SplashScreenFinished @"k__CLASS__PREFIX__SplashScreenFinished"
 
 /**
 * Rest API Configuration

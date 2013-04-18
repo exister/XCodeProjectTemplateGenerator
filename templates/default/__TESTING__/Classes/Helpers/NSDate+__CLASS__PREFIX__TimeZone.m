@@ -1,5 +1,6 @@
 #import <xlocale/_time.h>
 #import "NSDate+__CLASS__PREFIX__TimeZone.h"
+#import "NSString+SSToolkitAdditions.h"
 
 #define ISO8601_MAX_LEN 25
 
@@ -16,8 +17,17 @@
     if (!iso8601) {
         return nil;
     }
-    
-    //TODO: transform NSString here instead of memory manipulations
+
+    if ([iso8601 containsString:@"."]) {
+        //2013-02-22T15:27:21.322035+00:00
+        if ([iso8601 containsString:@"+"]) {
+            iso8601 = [NSString stringWithFormat:@"%@%@", [iso8601 substringToIndex:[iso8601 rangeOfString:@"."].location], [iso8601 substringFromIndex:[iso8601 rangeOfString:@"+"].location]];
+        }
+        //2013-02-22T15:27:21.322035Z
+        else if ([iso8601 containsString:@"Z"]) {
+            iso8601 = [NSString stringWithFormat:@"%@Z", [iso8601 substringToIndex:[iso8601 rangeOfString:@"."].location]];
+        }
+    }
 
     char *str = (char *)[iso8601 cStringUsingEncoding:NSUTF8StringEncoding];
     char newStr[ISO8601_MAX_LEN];
@@ -26,31 +36,6 @@
     size_t len = strlen(str);
     if (len == 0) {
         return nil;
-    }
-
-    //2013-02-22T15:27:21.322035+00:00
-    //2013-02-22T15:27:21.322035Z
-
-    char point = '.';
-    char *point_position = strchr(str, point);
-    if (point_position) {
-        char plus = '+';
-        char z = 'Z';
-        char *plus_position = strchr(str, plus);
-        char *z_position = strchr(str, z);
-
-        if (plus_position) {
-            memcpy(newStr, str, (point_position - str));
-            memcpy(newStr + (point_position - str), str + (plus_position - str), 6);
-        }
-        else if (z_position) {
-            memcpy(newStr, str, (point_position - str));
-            strncpy(newStr + (point_position - str), "Z\0", 2);
-        }
-
-        len = strlen(newStr);
-        strncpy(str, newStr, sizeof(newStr));
-        bzero(newStr, ISO8601_MAX_LEN);
     }
 
     // UTC dates ending with Z

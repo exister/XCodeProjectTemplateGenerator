@@ -6,8 +6,15 @@
 
 + (void)setAuthToken:(NSString *)token;
 
++ (NSString *)deviceId;
+
++ (void)setDeviceId:(NSString *)deviceID;
+
 + (BOOL)isAuthenticated;
 
 + (NSString *)pushToken;
 
++ (BOOL)deviceRegistered;
+
++ (void)setDeviceRegistered:(BOOL)registered;
 @end

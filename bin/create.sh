@@ -3,6 +3,8 @@
 set -e
 set -x
 
+unset LANG
+
 function usage() {
   echo "Usage: $0 <template_name> <path_to_new_project> <package_name> <project_name> <class_prefix> <organization_name>"
   echo "  <template_name>: Template name"

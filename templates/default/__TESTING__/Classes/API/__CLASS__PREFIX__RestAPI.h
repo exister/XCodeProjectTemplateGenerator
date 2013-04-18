@@ -11,6 +11,7 @@
 
 - (void)cancelAllRequestsForDelegate:(id)delegate;
 
+- (void)registerDeviceWithSuccessBlock:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
 @end
 
 
