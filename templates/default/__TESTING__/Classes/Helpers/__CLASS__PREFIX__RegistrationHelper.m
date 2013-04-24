@@ -54,8 +54,23 @@ static NSNumber *cachedDeviceRegistered = nil;
 {
     if (cachedPushToken == nil) {
         cachedPushToken = [[NSUserDefaults standardUserDefaults] stringForKey:k__CLASS__PREFIX__UDPushToken];
+        if (cachedPushToken == nil) {
+            cachedPushToken = @"";
+        }
     }
     return cachedPushToken;
+}
+
++ (void)setPushToken:(NSString *)pushToken {
+    [[NSUserDefaults standardUserDefaults] setObject:pushToken forKey:k__CLASS__PREFIX__UDPushToken];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    if (pushToken == nil) {
+        cachedPushToken = @"";
+    }
+    else {
+        cachedPushToken = pushToken;
+    }
 }
 
 + (BOOL)deviceRegistered

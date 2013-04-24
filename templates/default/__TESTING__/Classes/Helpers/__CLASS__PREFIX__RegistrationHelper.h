@@ -14,6 +14,8 @@
 
 + (NSString *)pushToken;
 
++ (void)setPushToken:(NSString *)pushToken;
+
 + (BOOL)deviceRegistered;
 
 + (void)setDeviceRegistered:(BOOL)registered;

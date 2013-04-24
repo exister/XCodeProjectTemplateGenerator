@@ -345,8 +345,7 @@
     pushToken = [pushToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     pushToken = [pushToken stringByReplacingOccurrencesOfString:@" " withString:@""];
 
-    [[NSUserDefaults standardUserDefaults] setObject:pushToken forKey:k__CLASS__PREFIX__UDPushToken];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [__CLASS__PREFIX__RegistrationHelper setPushToken:pushToken];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
 }
@@ -361,10 +360,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithUUID] forKey:k__CLASS__PREFIX__UDPushToken];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
-#else
-    [self hideSplashScreen];
 #endif
+    [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
 }
 
 /** Called if app is active when the notification comes in
