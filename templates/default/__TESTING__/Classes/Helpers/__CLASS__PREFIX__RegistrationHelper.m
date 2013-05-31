@@ -14,6 +14,24 @@ static NSString *cachedAuthToken = nil;
 static NSString *cachedPushToken = nil;
 static NSNumber *cachedDeviceRegistered = nil;
 
++ (id)sharedInstance
+{
+    static __CLASS__PREFIX__RegistrationHelper *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)startObserving {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handle401:) name:k__CLASS__PREFIX__UnauthorizedNotification object:nil];
+}
+
+- (void)handle401:(NSNotification *)notification {
+    [__CLASS__PREFIX__RegistrationHelper setAuthToken:nil];
+}
+
 + (NSString *)authToken
 {
     if (cachedAuthToken == nil) {
@@ -27,7 +45,7 @@ static NSNumber *cachedDeviceRegistered = nil;
     cachedAuthToken = token;
 #warning Saving auth token disabled for debug configuration
 #ifndef DEBUG
-    [SSKeychain setPassword:token forService:kCDKeychainServiceName account:kAuthTokenAccount];
+    [SSKeychain setPassword:token forService:k__CLASS__PREFIX__KeychainServiceName account:kAuthTokenAccount];
 #endif
 }
 

@@ -18,7 +18,8 @@ extern int const ddLogLevel;
 /**
 * HockeyApp
 */
-#define k__CLASS__PREFIX__HockeyAppApiKey @""
+#define k__CLASS__PREFIX__HockeyAppApiKeyBeta @""
+#define k__CLASS__PREFIX__HockeyAppApiKeyLive @""
 
 /**
 * ShareKit
@@ -39,6 +40,7 @@ extern int const ddLogLevel;
 #define k__CLASS__PREFIX__SplashScreenJobDoneNotification @"k__CLASS__PREFIX__SplashScreenJobDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification @"k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenFinished @"k__CLASS__PREFIX__SplashScreenFinished"
+#define k__CLASS__PREFIX__UnauthorizedNotification @"k__CLASS__PREFIX__UnauthorizedNotification"
 
 /**
 * Rest API Configuration
@@ -57,3 +59,9 @@ typedef enum {
     __CLASS__PREFIX__NetworkReachableViaWWANStatus = 1,
     __CLASS__PREFIX__NetworkReachableViaWiFiStatus = 2,
 } __CLASS__PREFIX__NetworkReachabilityStatus;
+
+
+/**
+ * Messages
+ */
+#define k__CLASS__PREFIX__MessageServerError @"Проблемы с соединением"

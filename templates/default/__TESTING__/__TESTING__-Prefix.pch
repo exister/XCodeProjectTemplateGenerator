@@ -21,6 +21,7 @@
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
     #import "__CLASS__PREFIX__Configuration.h"
+    #import "__CLASS__PREFIX__RestAPI.h"
     #import "CoreData+MagicalRecord.h"
     #import "DDLog.h"
 #endif

@@ -23,7 +23,7 @@
 #endif
 //include only for development builds
 #ifdef LOCAL
-    #import <OHHTTPStubs/OHHTTPStubs.h>
+#import <OHHTTPStubs/OHHTTPStubs.h>
 #endif
 //include only for Beta releases
 #ifdef BETA
@@ -33,12 +33,15 @@
 #ifdef RELEASE
     #import "Flurry.h"
 #endif
+#ifdef DEBUG
+#import <SparkInspector/SparkInspector.h>
+#endif
 
 /**
 * Global logging level
 */
 #ifdef DEBUG
-    int const ddLogLevel = LOG_LEVEL_VERBOSE;
+int const ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
     int const ddLogLevel = LOG_LEVEL_WARN;
 #endif
@@ -64,6 +67,8 @@
 
 - (void)initServices;
 
+- (void)initAppearance;
+
 - (void)runSplashScreenJobs;
 
 - (void)onSplashScreenJobDone:(NSNotification *)notification;
@@ -88,26 +93,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initLoggers];
-    [self initPush];
     [self initLocation];
     [self initNetwork];
     [self initDB];
     [self initAuth];
     [self initServices];
+    [self initAppearance];
 
     [self handleLaunchOptions:launchOptions];
-    
+
     // Override point for customization after application launch.
-    
+
     //manual loading of rootViewController used to load views before splash screen
     self.window.rootViewController = [UIViewController loadFromMainStoryBoard:@"__CLASS__PREFIX__ViewController"];
     [self.window makeKeyAndVisible];
 
     [self showSplashScreen];
 
+    [self initPush];
+
     return YES;
 }
-                            
+
 /**
 * Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 *
@@ -237,9 +244,11 @@
 
     [[JMC sharedInstance] configureWithOptions:options];
 
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:k__CLASS__PREFIX__HockeyAppApiKey
-                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyBeta liveIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyLive delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
+#endif
+#ifdef DEBUG
+    [SparkInspector enableObservation];
 #endif
 }
 
@@ -274,7 +283,7 @@
 {
 #ifdef LOCAL
     NSArray* stubs = @[
-           
+
     ];
 
     [OHHTTPStubs shouldStubRequestsPassingTest:^BOOL(NSURLRequest *request) {
@@ -310,6 +319,8 @@
     if (deviceId == nil) {
         [__CLASS__PREFIX__RegistrationHelper setDeviceId:[NSString stringWithUUID]];
     }
+
+    [[__CLASS__PREFIX__RegistrationHelper sharedInstance] startObserving];
 }
 
 /**
@@ -330,6 +341,10 @@
     [Appirater appLaunched:YES];
 }
 
+- (void)initAppearance {
+
+}
+
 #pragma mark - Notifications
 /** @name Notifications */
 
@@ -346,7 +361,7 @@
     pushToken = [pushToken stringByReplacingOccurrencesOfString:@" " withString:@""];
 
     [__CLASS__PREFIX__RegistrationHelper setPushToken:pushToken];
-    
+
     [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
 }
 
@@ -357,8 +372,7 @@
     DDLogError(@"Failed to register for remote notifications: %@", error.localizedDescription);
 #if TARGET_IPHONE_SIMULATOR
     if (![[NSUserDefaults standardUserDefaults] stringForKey:k__CLASS__PREFIX__UDPushToken]) {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithUUID] forKey:k__CLASS__PREFIX__UDPushToken];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [__CLASS__PREFIX__RegistrationHelper setPushToken:[NSString stringWithUUID]];
     }
 #endif
     [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];

@@ -27,15 +27,24 @@
 		18DA8261168C4FCB007F507A /* __CLASS__PREFIX__BaseQuickDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8260168C4FCB007F507A /* __CLASS__PREFIX__BaseQuickDialogController.m */; };
 		18DA8264168C500D007F507A /* __CLASS__PREFIX__BaseQuickDialogTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8263168C500D007F507A /* __CLASS__PREFIX__BaseQuickDialogTableView.m */; };
 		6E3D86748C8A4F87A8175186 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 599E4B60FC4246FA8724331B /* libPods.a */; settings = {}; };
+		8FD4C084788E94A5BEB50739 /* __CLASS__PREFIX__SegmentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C6442A9DAAD1F8F151D6 /* __CLASS__PREFIX__SegmentedViewController.m */; };
 		8FD4C1DC7160BD53D28A2BE7 /* __CLASS__PREFIX__RegistrationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CA6E9F5051DFD171085C /* __CLASS__PREFIX__RegistrationHelper.m */; };
+		8FD4C1EBEF413000B5950395 /* image_icon_validation_invalid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD4CB94EC60D082626AE2B8 /* image_icon_validation_invalid@2x.png */; };
+		8FD4C2204B9DE5A58C56C55D /* image_tooltip_invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD4CB187BC76895BC13921C /* image_tooltip_invalid.png */; };
 		8FD4C25B522ED94708D548AB /* __CLASS__PREFIX__RestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CE9245DA827A55264929 /* __CLASS__PREFIX__RestAPI.m */; };
+		8FD4C333128D8F7F7ABEFE18 /* image_tooltip_invalid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD4C250002843941C612ADA /* image_tooltip_invalid@2x.png */; };
 		8FD4C3644F765D5BAA1607E8 /* __CLASS__PREFIX__SHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C98C6F3A1DF9F26B1CFC /* __CLASS__PREFIX__SHKConfigurator.m */; };
 		8FD4C3C1731EDE32CE1DD38D /* __CLASS__PREFIX__RestAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CECAD3B4E09A17E3E22D /* __CLASS__PREFIX__RestAPIClient.m */; };
+		8FD4C4029854FF4920E3EED5 /* __CLASS__PREFIX__FormHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C20DEDDC4FEE4EDF8623 /* __CLASS__PREFIX__FormHelper.m */; };
+		8FD4C4B8513204ECB50023B8 /* image_icon_validation_invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD4C95D7D066E563D754A28 /* image_icon_validation_invalid.png */; };
 		8FD4C6B75004C25BBFF56679 /* NSDate+__CLASS__PREFIX__TimeZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CF98458D5B641BB1BD21 /* NSDate+__CLASS__PREFIX__TimeZone.m */; };
 		8FD4CCBC78E638C4081BE6E7 /* NSString+__CLASS__PREFIX__Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C3786B45680F88B5BCCC /* NSString+__CLASS__PREFIX__Utils.m */; };
 		8FD4CCC6902F60AC079BD707 /* UIViewController+__CLASS__PREFIX__StoryBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CE01F548FC9728B27D29 /* UIViewController+__CLASS__PREFIX__StoryBoard.m */; };
 		8FD4CCE19CE17828288EE8D7 /* UIScreen+__CLASS__PREFIX__Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C7254C02FEB256E637A5 /* UIScreen+__CLASS__PREFIX__Screen.m */; };
+		8FD4CE4C6599A095733EB591 /* __CLASS__PREFIX__InvalidTooltipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CF57F21168A28AD58B84 /* __CLASS__PREFIX__InvalidTooltipImageView.m */; };
 		8FD4CE7FD58D62F364F77784 /* __CLASS__PREFIX__ValidatableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C772F18AB0DF8D95261E /* __CLASS__PREFIX__ValidatableObject.m */; };
+		8FD4CE9C491BAA9B378A4FF7 /* __CLASS__PREFIX__TooltipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C34B7A00EC44983FBF38 /* __CLASS__PREFIX__TooltipImageView.m */; };
+		8FD4CEE2B2D8BAD8C9057674 /* __CLASS__PREFIX__ValidatableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CB8DE06AEC9DE111A25F /* __CLASS__PREFIX__ValidatableTextField.m */; };
 		8FD4CF6BBD50565804B2D6E3 /* __CLASS__PREFIX__MapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CA6BD123A1581076D21C /* __CLASS__PREFIX__MapHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +94,14 @@
 		18DA8262168C500D007F507A /* __CLASS__PREFIX__BaseQuickDialogTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = __CLASS__PREFIX__BaseQuickDialogTableView.h; path = Classes/BaseClasses/__CLASS__PREFIX__BaseQuickDialogTableView.h; sourceTree = "<group>"; };
 		18DA8263168C500D007F507A /* __CLASS__PREFIX__BaseQuickDialogTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = __CLASS__PREFIX__BaseQuickDialogTableView.m; path = Classes/BaseClasses/__CLASS__PREFIX__BaseQuickDialogTableView.m; sourceTree = "<group>"; };
 		599E4B60FC4246FA8724331B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPods.a; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FD4C1BF955BE92538E62EC4 /* __CLASS__PREFIX__ValidatableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__ValidatableTextField.h; sourceTree = "<group>"; };
+		8FD4C20DEDDC4FEE4EDF8623 /* __CLASS__PREFIX__FormHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__FormHelper.m; sourceTree = "<group>"; };
+		8FD4C250002843941C612ADA /* image_tooltip_invalid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_tooltip_invalid@2x.png"; sourceTree = "<group>"; };
+		8FD4C34B7A00EC44983FBF38 /* __CLASS__PREFIX__TooltipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__TooltipImageView.m; sourceTree = "<group>"; };
 		8FD4C3786B45680F88B5BCCC /* NSString+__CLASS__PREFIX__Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+__CLASS__PREFIX__Utils.m"; sourceTree = "<group>"; };
+		8FD4C37952E35E254D4A9251 /* __CLASS__PREFIX__TooltipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__TooltipImageView.h; sourceTree = "<group>"; };
+		8FD4C4CA5DA7961FA580ACB1 /* __CLASS__PREFIX__TooltipImageViewProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__TooltipImageViewProtectedMethods.h; sourceTree = "<group>"; };
+		8FD4C6442A9DAAD1F8F151D6 /* __CLASS__PREFIX__SegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__SegmentedViewController.m; sourceTree = "<group>"; };
 		8FD4C65DCDC6E59DEEC9886A /* NSDate+__CLASS__PREFIX__TimeZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+__CLASS__PREFIX__TimeZone.h"; sourceTree = "<group>"; };
 		8FD4C6CE4BE8D96A71F2F041 /* NSString+__CLASS__PREFIX__Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+__CLASS__PREFIX__Utils.h"; sourceTree = "<group>"; };
 		8FD4C7254C02FEB256E637A5 /* UIScreen+__CLASS__PREFIX__Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+__CLASS__PREFIX__Screen.m"; sourceTree = "<group>"; };
@@ -93,18 +109,26 @@
 		8FD4C827DE29214AF83E10E1 /* __CLASS__PREFIX__RestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__RestAPI.h; sourceTree = "<group>"; };
 		8FD4C85BBE6846C71E215F69 /* __CLASS__PREFIX__RegistrationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__RegistrationHelper.h; sourceTree = "<group>"; };
 		8FD4C908D763B1B537EDC759 /* UIViewController+__CLASS__PREFIX__StoryBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+__CLASS__PREFIX__StoryBoard.h"; sourceTree = "<group>"; };
+		8FD4C95D7D066E563D754A28 /* image_icon_validation_invalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_icon_validation_invalid.png; sourceTree = "<group>"; };
 		8FD4C98C6F3A1DF9F26B1CFC /* __CLASS__PREFIX__SHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__SHKConfigurator.m; sourceTree = "<group>"; };
+		8FD4C9B2F22F85D4D96EFBD7 /* __CLASS__PREFIX__FormHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__FormHelper.h; sourceTree = "<group>"; };
 		8FD4CA6BD123A1581076D21C /* __CLASS__PREFIX__MapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__MapHelper.m; sourceTree = "<group>"; };
 		8FD4CA6E9F5051DFD171085C /* __CLASS__PREFIX__RegistrationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__RegistrationHelper.m; sourceTree = "<group>"; };
+		8FD4CB187BC76895BC13921C /* image_tooltip_invalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_tooltip_invalid.png; sourceTree = "<group>"; };
 		8FD4CB446262AD9198E2DF62 /* __CLASS__PREFIX__SHKConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__SHKConfigurator.h; sourceTree = "<group>"; };
+		8FD4CB8DE06AEC9DE111A25F /* __CLASS__PREFIX__ValidatableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__ValidatableTextField.m; sourceTree = "<group>"; };
+		8FD4CB94EC60D082626AE2B8 /* image_icon_validation_invalid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_icon_validation_invalid@2x.png"; sourceTree = "<group>"; };
 		8FD4CBDC9654FD6F67911F57 /* __CLASS__PREFIX__RestAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__RestAPIClient.h; sourceTree = "<group>"; };
+		8FD4CC4D45CAC516F489C271 /* __CLASS__PREFIX__InvalidTooltipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__InvalidTooltipImageView.h; sourceTree = "<group>"; };
 		8FD4CCAA51E6E1ED6BB60B8B /* __CLASS__PREFIX__ValidatableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = __CLASS__PREFIX__ValidatableObject.h; path = Classes/BaseClasses/__CLASS__PREFIX__ValidatableObject.h; sourceTree = "<group>"; };
 		8FD4CDF080ABF3C5A432F495 /* __CLASS__PREFIX__MapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__MapHelper.h; sourceTree = "<group>"; };
 		8FD4CE01F548FC9728B27D29 /* UIViewController+__CLASS__PREFIX__StoryBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+__CLASS__PREFIX__StoryBoard.m"; sourceTree = "<group>"; };
 		8FD4CE8955FA2462AF2B712C /* UIScreen+__CLASS__PREFIX__Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+__CLASS__PREFIX__Screen.h"; sourceTree = "<group>"; };
 		8FD4CE9245DA827A55264929 /* __CLASS__PREFIX__RestAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__RestAPI.m; sourceTree = "<group>"; };
 		8FD4CECAD3B4E09A17E3E22D /* __CLASS__PREFIX__RestAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__RestAPIClient.m; sourceTree = "<group>"; };
+		8FD4CF57F21168A28AD58B84 /* __CLASS__PREFIX__InvalidTooltipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__InvalidTooltipImageView.m; sourceTree = "<group>"; };
 		8FD4CF98458D5B641BB1BD21 /* NSDate+__CLASS__PREFIX__TimeZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+__CLASS__PREFIX__TimeZone.m"; sourceTree = "<group>"; };
+		8FD4CFEBFB61EE509B892EF5 /* __CLASS__PREFIX__SegmentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__SegmentedViewController.h; sourceTree = "<group>"; };
 		C09984DCBB1B436697C910FA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -180,6 +204,8 @@
 				8FD4C8CDD53235DD4B0EE895 /* Helpers */,
 				8FD4CF3A646BFD995D92B4F4 /* API */,
 				8FD4C464FCEDC3EE1A1541E4 /* Share */,
+				8FD4C7DC1555DB7195EA7340 /* Widgets */,
+				8FD4C86B1CF4A3921BCC01B9 /* Resources */,
 			);
 			path = __TESTING__;
 			sourceTree = "<group>";
@@ -244,6 +270,42 @@
 			path = Classes/Share;
 			sourceTree = "<group>";
 		};
+		8FD4C509F745493C016F78BA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8FD4CB187BC76895BC13921C /* image_tooltip_invalid.png */,
+				8FD4C250002843941C612ADA /* image_tooltip_invalid@2x.png */,
+				8FD4C95D7D066E563D754A28 /* image_icon_validation_invalid.png */,
+				8FD4CB94EC60D082626AE2B8 /* image_icon_validation_invalid@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		8FD4C7DC1555DB7195EA7340 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				8FD4C37952E35E254D4A9251 /* __CLASS__PREFIX__TooltipImageView.h */,
+				8FD4C34B7A00EC44983FBF38 /* __CLASS__PREFIX__TooltipImageView.m */,
+				8FD4C1BF955BE92538E62EC4 /* __CLASS__PREFIX__ValidatableTextField.h */,
+				8FD4CB8DE06AEC9DE111A25F /* __CLASS__PREFIX__ValidatableTextField.m */,
+				8FD4CC4D45CAC516F489C271 /* __CLASS__PREFIX__InvalidTooltipImageView.h */,
+				8FD4CF57F21168A28AD58B84 /* __CLASS__PREFIX__InvalidTooltipImageView.m */,
+				8FD4CFEBFB61EE509B892EF5 /* __CLASS__PREFIX__SegmentedViewController.h */,
+				8FD4C6442A9DAAD1F8F151D6 /* __CLASS__PREFIX__SegmentedViewController.m */,
+				8FD4C4CA5DA7961FA580ACB1 /* __CLASS__PREFIX__TooltipImageViewProtectedMethods.h */,
+			);
+			name = Widgets;
+			path = Classes/Widgets;
+			sourceTree = "<group>";
+		};
+		8FD4C86B1CF4A3921BCC01B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8FD4C509F745493C016F78BA /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8FD4C8CDD53235DD4B0EE895 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +321,8 @@
 				8FD4CA6E9F5051DFD171085C /* __CLASS__PREFIX__RegistrationHelper.m */,
 				8FD4C908D763B1B537EDC759 /* UIViewController+__CLASS__PREFIX__StoryBoard.h */,
 				8FD4CE01F548FC9728B27D29 /* UIViewController+__CLASS__PREFIX__StoryBoard.m */,
+				8FD4C9B2F22F85D4D96EFBD7 /* __CLASS__PREFIX__FormHelper.h */,
+				8FD4C20DEDDC4FEE4EDF8623 /* __CLASS__PREFIX__FormHelper.m */,
 			);
 			name = Helpers;
 			path = Classes/Helpers;
@@ -358,6 +422,10 @@
 				1867C79A168B1EA9006F623C /* Default@2x.png in Resources */,
 				1867C79C168B1EA9006F623C /* Default-568h@2x.png in Resources */,
 				1867C79F168B1EA9006F623C /* MainStoryboard.storyboard in Resources */,
+				8FD4C2204B9DE5A58C56C55D /* image_tooltip_invalid.png in Resources */,
+				8FD4C333128D8F7F7ABEFE18 /* image_tooltip_invalid@2x.png in Resources */,
+				8FD4C4B8513204ECB50023B8 /* image_icon_validation_invalid.png in Resources */,
+				8FD4C1EBEF413000B5950395 /* image_icon_validation_invalid@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +504,11 @@
 				8FD4C25B522ED94708D548AB /* __CLASS__PREFIX__RestAPI.m in Sources */,
 				8FD4C3C1731EDE32CE1DD38D /* __CLASS__PREFIX__RestAPIClient.m in Sources */,
 				8FD4C3644F765D5BAA1607E8 /* __CLASS__PREFIX__SHKConfigurator.m in Sources */,
+				8FD4C4029854FF4920E3EED5 /* __CLASS__PREFIX__FormHelper.m in Sources */,
+				8FD4CE9C491BAA9B378A4FF7 /* __CLASS__PREFIX__TooltipImageView.m in Sources */,
+				8FD4CEE2B2D8BAD8C9057674 /* __CLASS__PREFIX__ValidatableTextField.m in Sources */,
+				8FD4CE4C6599A095733EB591 /* __CLASS__PREFIX__InvalidTooltipImageView.m in Sources */,
+				8FD4C084788E94A5BEB50739 /* __CLASS__PREFIX__SegmentedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

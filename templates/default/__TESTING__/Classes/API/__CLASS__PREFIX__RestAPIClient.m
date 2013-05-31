@@ -1,8 +1,8 @@
 #import <objc/runtime.h>
 #import "__CLASS__PREFIX__RestAPIClient.h"
-#import "AFNetworking.h"
 #import "__CLASS__PREFIX__RestAPI.h"
 #import "__CLASS__PREFIX__RegistrationHelper.h"
+#import "AFJSONRequestOperation.h"
 
 
 /**
@@ -28,14 +28,14 @@ static char kCDRestAPIOperationDelegateObjectKey;
 
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
         [self setDefaultHeader:@"Accept" value:@"application/json"];
-        [self setDefaultHeader:@"DEVICE_ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
-        [self setDefaultHeader:@"PUSH_ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
-        [self setDefaultHeader:@"DEVICE_OS" value:@"iOS"];
-        [self setDefaultHeader:@"DEVICE_OS_VERSION" value:[[UIDevice currentDevice] systemVersion]];
-        [self setDefaultHeader:@"DEVICE_MODEL" value:[[UIDevice currentDevice] model]];
-        [self setDefaultHeader:@"DEVICE_SCREEN" value:screenType];
-        [self setDefaultHeader:@"APPLICATION" value:applicationName];
-        [self setDefaultHeader:@"APPLICATION_VERSION" value:applicationVersion];
+        [self setDefaultHeader:@"Device-ID" value:[__CLASS__PREFIX__RegistrationHelper deviceId]];
+        [self setDefaultHeader:@"Push-ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
+        [self setDefaultHeader:@"Device-OS" value:@"iOS"];
+        [self setDefaultHeader:@"Device-OS-Version" value:[[UIDevice currentDevice] systemVersion]];
+        [self setDefaultHeader:@"Device-Model" value:[[UIDevice currentDevice] model]];
+        [self setDefaultHeader:@"Device-Screen" value:screenType];
+        [self setDefaultHeader:@"Application" value:applicationName];
+        [self setDefaultHeader:@"Application-Version" value:applicationVersion];
         if ([__CLASS__PREFIX__RegistrationHelper authToken]) {
             [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Token %@", [__CLASS__PREFIX__RegistrationHelper authToken]]];
         }
@@ -47,9 +47,14 @@ static char kCDRestAPIOperationDelegateObjectKey;
 }
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters {
-    [self setDefaultHeader:@"DEVICE_ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
-    [self setDefaultHeader:@"PUSH_ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
-    return [super requestWithMethod:method path:path parameters:parameters];
+    [self setDefaultHeader:@"Device-ID" value:[__CLASS__PREFIX__RegistrationHelper deviceId]];
+    [self setDefaultHeader:@"Push-ID" value:[__CLASS__PREFIX__RegistrationHelper pushToken]];
+    if ([__CLASS__PREFIX__RegistrationHelper authToken]) {
+        [self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Token %@", [__CLASS__PREFIX__RegistrationHelper authToken]]];
+    }
+    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
+    [request setTimeoutInterval:10];
+    return request;
 }
 
 

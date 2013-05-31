@@ -2,6 +2,10 @@
 
 @interface __CLASS__PREFIX__RegistrationHelper : NSObject
 
++ (id)sharedInstance;
+
+- (void)startObserving;
+
 + (NSString *)authToken;
 
 + (void)setAuthToken:(NSString *)token;

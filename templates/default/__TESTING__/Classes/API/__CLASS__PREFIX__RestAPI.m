@@ -1,5 +1,6 @@
 #import "__CLASS__PREFIX__RestAPI.h"
 #import "__CLASS__PREFIX__RestAPIClient.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 #define kCDSentMessageToSupportVerb @"sent comment to support"
 
@@ -7,15 +8,15 @@
 
 @property (nonatomic, strong) __CLASS__PREFIX__RestAPIClient *client;
 
-- (void)makeGETRequest:(NSString *)path params:(NSMutableDictionary *)params success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
+- (void)makeGETRequest:(NSString *)path params:(NSMutableDictionary *)params success:(__CLASS__PREFIX__RestAPISuccessCallback)success failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure owner:(id)owner;
 
-- (void)makePOSTRequest:(NSString *)path params:(NSMutableDictionary *)params success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
+- (void)makePOSTRequest:(NSString *)path params:(NSMutableDictionary *)params success:(__CLASS__PREFIX__RestAPISuccessCallback)success failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure owner:(id)owner;
 
-- (void)makePUTRequest:(NSString *)path params:(NSMutableDictionary *)params success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
+- (void)makePUTRequest:(NSString *)path params:(NSMutableDictionary *)params success:(__CLASS__PREFIX__RestAPISuccessCallback)success failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure owner:(id)owner;
 
-- (void)makeDELETERequest:(NSString *)path params:(NSMutableDictionary *)params success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
+- (void)makeDELETERequest:(NSString *)path params:(NSMutableDictionary *)params success:(__CLASS__PREFIX__RestAPISuccessCallback)success failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure owner:(id)owner;
 
-- (void)makePATCHRequest:(NSString *)path params:(NSMutableDictionary *)params success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure owner:(id)owner;
+- (void)makePATCHRequest:(NSString *)path params:(NSMutableDictionary *)params success:(__CLASS__PREFIX__RestAPISuccessCallback)success failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure owner:(id)owner;
 
 
 @end
@@ -86,8 +87,8 @@
 */
 - (void)makeGETRequest:(NSString *)path
                 params:(NSMutableDictionary *)params
-                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                success:(__CLASS__PREFIX__RestAPISuccessCallback)success
+                failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                   owner:(id)owner
 {
     [self.client getPath:path delegate:owner parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -103,8 +104,8 @@
 
 - (void)makePOSTRequest:(NSString *)path
                  params:(NSMutableDictionary *)params
-                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                success:(__CLASS__PREFIX__RestAPISuccessCallback)success
+                failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                   owner:(id)owner
 {
     DDLogInfo(@"POST %@: %@", path, params);
@@ -121,8 +122,8 @@
 
 - (void)makePUTRequest:(NSString *)path
                 params:(NSMutableDictionary *)params
-               success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+               success:(__CLASS__PREFIX__RestAPISuccessCallback)success
+               failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                  owner:(id)owner
 {
     DDLogInfo(@"PUT %@: %@", path, params);
@@ -139,8 +140,8 @@
 
 - (void)makeDELETERequest:(NSString *)path
                    params:(NSMutableDictionary *)params
-                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                  success:(__CLASS__PREFIX__RestAPISuccessCallback)success
+                  failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                     owner:(id)owner
 {
     [self.client deletePath:path delegate:owner parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -156,8 +157,8 @@
 
 - (void)makePATCHRequest:(NSString *)path
                   params:(NSMutableDictionary *)params
-                 success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                 success:(__CLASS__PREFIX__RestAPISuccessCallback)success
+                 failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                    owner:(id)owner
 {
     [self.client patchPath:path delegate:owner parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -179,13 +180,26 @@
     [self.client cancelAllOperationsForDelegate:delegate];
 }
 
-- (void)registerDeviceWithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+#pragma mark - Device
+
+- (void)registerDeviceWithSuccessBlock:(__CLASS__PREFIX__RestAPISuccessCallback)success
+                               failure:(__CLASS__PREFIX__RestAPIFailureCallback)failure
                                  owner:(id)owner
 {
     DDLogInfo(@"registerDeviceWithSuccessBlock");
     NSMutableDictionary *params = [@{} mutableCopy];
     [self makePOSTRequest:@"v1/device-registration/" params:params success:success failure:failure owner:owner];
+}
+
+#pragma mark - Utils
+
++ (NSString *)convertNonFieldErrorsToString:(NSArray *)errors
+{
+    if (errors == nil) {
+        return @"";
+    }
+
+    return [errors componentsJoinedByString:@"\n"];
 }
 
 @end
