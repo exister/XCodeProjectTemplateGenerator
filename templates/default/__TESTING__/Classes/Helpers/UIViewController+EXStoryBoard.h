@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface UIViewController (__CLASS__PREFIX__StoryBoard)
+@interface UIViewController (EXStoryBoard)
 + (UIViewController *)loadFromMainStoryBoard:(NSString *)identifier;
 
 

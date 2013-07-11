@@ -9,6 +9,11 @@ extern int const ddLogLevel;
 #define k__CLASS__PREFIX__UDDeviceRegistered @"__CLASS__PREFIX__UDDeviceRegistered"
 
 /**
+* TestFlight
+*/
+#define k__CLASS__PREFIX__TestFlightAppToken @""
+
+/**
 * JIRA
 */
 #define k__CLASS__PREFIX__JIRAHost @""

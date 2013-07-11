@@ -1,7 +1,7 @@
-#import "NSString+__CLASS__PREFIX__Utils.h"
+#import "NSString+EXUtils.h"
 
 
-@implementation NSString (__CLASS__PREFIX__Utils)
+@implementation NSString (EXUtils)
 
 - (BOOL)stringIsEmpty
 {

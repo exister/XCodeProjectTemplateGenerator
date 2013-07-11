@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSString (__CLASS__PREFIX__Utils)
+@interface NSString (EXUtils)
 
 - (BOOL)stringIsEmpty;
 

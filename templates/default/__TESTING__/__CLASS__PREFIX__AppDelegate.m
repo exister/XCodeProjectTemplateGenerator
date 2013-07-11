@@ -3,8 +3,8 @@
 #import "DDASLLogger.h"
 #import "VPPLocationController.h"
 #import "__CLASS__PREFIX__RegistrationHelper.h"
-#import "UIScreen+__CLASS__PREFIX__Screen.h"
-#import "UIViewController+__CLASS__PREFIX__StoryBoard.h"
+#import "UIScreen+EXScreen.h"
+#import "UIViewController+EXStoryBoard.h"
 #import "NSDate+SSToolkitAdditions.h"
 #import "DefaultSHKConfigurator.h"
 #import "__CLASS__PREFIX__SHKConfigurator.h"
@@ -15,7 +15,7 @@
 #import "Appirater.h"
 #import "NSString+SSToolkitAdditions.h"
 #import "__CLASS__PREFIX__RestAPI.h"
-#import "NSDate+__CLASS__PREFIX__TimeZone.h"
+#import "NSDate+EXTimeZone.h"
 //include JIRA and HockeyApp only for Beta and AppStore releases
 #ifndef LOCAL
     #import "BITHockeyManager.h"
@@ -35,6 +35,9 @@
 #endif
 #ifdef DEBUG
 #import <SparkInspector/SparkInspector.h>
+#endif
+#if RUN_KIF_TESTS
+    #import__CLASS__PREFIX__TestControllerstController.h"
 #endif
 
 /**
@@ -68,6 +71,8 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)initServices;
 
 - (void)initAppearance;
+
+- (void)handleLocalNotification:(UILocalNotification *)notification;
 
 - (void)runSplashScreenJobs;
 
@@ -111,6 +116,13 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
     [self showSplashScreen];
 
     [self initPush];
+
+#if RUN_KIF_TESTS
+    [[__CLASS__PREFIX__TestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+__CLASS__PREFIX__TestControllerfailureCount]);
+    }];
+#endif
 
     return YES;
 }
@@ -199,6 +211,12 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
             DDLogInfo(@"Launched from remote notification");
             [self handleRemoteNotification:remoteNotificationData];
         }
+
+        UILocalNotification *localNotificationData = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        if (localNotificationData != nil) {
+            DDLogInfo(@"Launched from local notification");
+            [self handleLocalNotification:localNotificationData];
+        }
     }
 }
 
@@ -246,9 +264,6 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
 
     [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyBeta liveIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyLive delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
-#endif
-#ifdef DEBUG
-    [SparkInspector enableObservation];
 #endif
 }
 
@@ -388,6 +403,11 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
     [self handleRemoteNotification:userInfo];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    DDLogInfo(@"Received local notification");
+    [self handleLocalNotification:notification];
+}
+
 /** Processes remote notification
 *
 * @param data Remote notification data
@@ -396,13 +416,20 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     DDLogInfo(@"Processing remote notification: %@", data);
 
-    if (data[@"type"] && [(NSString *)data[@"type"] hasPrefix:@"show_"] && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+    if (data[@"t"] && [(NSString *)data[@"type"] isEqualToString:@"sh"] && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         [AJNotificationView showNoticeInView:self.window
                                         type:AJNotificationTypeBlue
-                                       title:data[@"text"]
+                                       title:data[@"aps"][@"alert"]
                              linedBackground:AJLinedBackgroundTypeDisabled
                                    hideAfter:2.5f];
     }
+}
+
+- (void)handleLocalNotification:(UILocalNotification *)notification
+{
+    DDLogInfo(@"Processing local notification: %@", notification);
+
+    NSDictionary *data = notification.userInfo;
 }
 
 #pragma mark - Splash screen

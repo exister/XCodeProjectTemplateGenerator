@@ -1,8 +1,16 @@
 #import <Foundation/Foundation.h>
 
 
-@interface __CLASS__PREFIX__MapHelper : NSObject
+@interface EXMapHelper : NSObject
++ (NSString *)locationToString:(CLLocation *)location;
+
++ (NSString *)coordinateToString:(CLLocationCoordinate2D)coordinate;
+
++ (CLLocation *)locationFromString:(NSString *)locationString;
+
 + (NSUInteger)zoomLevelForPlaceType:(NSString *)placeType;
+
++ (NSString *)boundingBox:(MKMapView *)mapView;
 
 + (void)setCenterCoordinate:(MKMapView *)mapToCenter centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated;
 
@@ -17,4 +25,5 @@
 + (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)mapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel;
 
 
++ (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
 @end

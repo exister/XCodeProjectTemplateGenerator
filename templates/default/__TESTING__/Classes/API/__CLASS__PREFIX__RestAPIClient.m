@@ -24,7 +24,8 @@ static char kCDRestAPIOperationDelegateObjectKey;
     if (self) {
         NSString *applicationName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
         NSString *applicationVersion = (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey) ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
-        NSString *screenType = [NSString stringWithFormat:@"%f", ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f)];
+        CGFloat scale = [[UIScreen mainScreen] scale];
+        NSString *screenSize = [NSString stringWithFormat:@"%dx%d", (NSInteger)([UIScreen mainScreen].bounds.size.width * scale), (NSInteger)([UIScreen mainScreen].bounds.size.height * scale)];
 
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
         [self setDefaultHeader:@"Accept" value:@"application/json"];
@@ -33,7 +34,7 @@ static char kCDRestAPIOperationDelegateObjectKey;
         [self setDefaultHeader:@"Device-OS" value:@"iOS"];
         [self setDefaultHeader:@"Device-OS-Version" value:[[UIDevice currentDevice] systemVersion]];
         [self setDefaultHeader:@"Device-Model" value:[[UIDevice currentDevice] model]];
-        [self setDefaultHeader:@"Device-Screen" value:screenType];
+        [self setDefaultHeader:@"Device-Screen-Size" value:screenSize];
         [self setDefaultHeader:@"Application" value:applicationName];
         [self setDefaultHeader:@"Application-Version" value:applicationVersion];
         if ([__CLASS__PREFIX__RegistrationHelper authToken]) {

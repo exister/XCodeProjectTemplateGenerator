@@ -1,7 +1,7 @@
-#import "UIViewController+__CLASS__PREFIX__StoryBoard.h"
+#import "UIViewController+EXStoryBoard.h"
 
 
-@implementation UIViewController (__CLASS__PREFIX__StoryBoard)
+@implementation UIViewController (EXStoryBoard)
 
 + (UIViewController *)loadFromMainStoryBoard:(NSString *)identifier
 {

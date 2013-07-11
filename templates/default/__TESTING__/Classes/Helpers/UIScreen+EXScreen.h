@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface UIScreen (__CLASS__PREFIX__Screen)
+@interface UIScreen (EXScreen)
 + (BOOL)isRetina4InchDisplay;
 
 

@@ -1,10 +1,10 @@
 #import <xlocale/_time.h>
-#import "NSDate+__CLASS__PREFIX__TimeZone.h"
+#import "NSDate+EXTimeZone.h"
 #import "NSString+SSToolkitAdditions.h"
 
 #define ISO8601_MAX_LEN 25
 
-@implementation NSDate (__CLASS__PREFIX__TimeZone)
+@implementation NSDate (EXTimeZone)
 
 - (NSDate *)toLocalTime
 {

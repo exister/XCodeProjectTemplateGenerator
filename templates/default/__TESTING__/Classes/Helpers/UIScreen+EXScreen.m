@@ -1,7 +1,7 @@
-#import "UIScreen+__CLASS__PREFIX__Screen.h"
+#import "UIScreen+EXScreen.h"
 
 
-@implementation UIScreen (__CLASS__PREFIX__Screen)
+@implementation UIScreen (EXScreen)
 
 + (BOOL)isRetina4InchDisplay {
     static dispatch_once_t predicate;

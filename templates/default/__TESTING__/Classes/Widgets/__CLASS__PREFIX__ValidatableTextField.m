@@ -8,7 +8,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import "__CLASS__PREFIX__ValidatableTextField.h"
-#import "NSString+__CLASS__PREFIX__Utils.h"
+#import "NSString+EXUtils.h"
 #import "__CLASS__PREFIX__InvalidTooltipImageView.h"
 
 
