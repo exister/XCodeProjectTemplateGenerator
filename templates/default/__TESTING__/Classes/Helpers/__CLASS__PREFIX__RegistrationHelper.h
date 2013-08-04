@@ -1,26 +1,13 @@
-#import <Foundation/Foundation.h>
+//
+//  __CLASS__PREFIX__RegistrationHelper.h
+//  __TESTING__
+//
+//  Created by Mikhail Kuznetsov on 04.08.13.
+//  Copyright (c) 2013 __COMPANY__NAME__. All rights reserved.
+//
 
-@interface __CLASS__PREFIX__RegistrationHelper : NSObject
+#import <UIKit/UIKit.h>
 
-+ (id)sharedInstance;
+@interface __CLASS__PREFIX__RegistrationHelper : EXRegistrationHelper
 
-- (void)startObserving;
-
-+ (NSString *)authToken;
-
-+ (void)setAuthToken:(NSString *)token;
-
-+ (NSString *)deviceId;
-
-+ (void)setDeviceId:(NSString *)deviceID;
-
-+ (BOOL)isAuthenticated;
-
-+ (NSString *)pushToken;
-
-+ (void)setPushToken:(NSString *)pushToken;
-
-+ (BOOL)deviceRegistered;
-
-+ (void)setDeviceRegistered:(BOOL)registered;
 @end

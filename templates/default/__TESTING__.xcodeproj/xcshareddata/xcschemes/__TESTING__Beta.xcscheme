@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
-   version = "1.7">
+   LastUpgradeVersion = "0460"
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1867C780168B1EA6006F623C"
-               BuildableName = "__TESTING__.app"
-               BlueprintName = "__TESTING__"
+               BlueprintIdentifier = "1876FE1417AE46B60025A4E2"
+               BuildableName = "__TESTING__Beta.app"
+               BlueprintName = "__TESTING__Beta"
                ReferencedContainer = "container:__TESTING__.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Beta">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1867C7A7168B1EA9006F623C"
-               BuildableName = "__TESTING__Tests.octest"
-               BlueprintName = "__TESTING__Tests"
-               ReferencedContainer = "container:__TESTING__.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1867C780168B1EA6006F623C"
-            BuildableName = "__TESTING__.app"
-            BlueprintName = "__TESTING__"
+            BlueprintIdentifier = "1876FE1417AE46B60025A4E2"
+            BuildableName = "__TESTING__Beta.app"
+            BlueprintName = "__TESTING__Beta"
             ReferencedContainer = "container:__TESTING__.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,31 +51,27 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1867C780168B1EA6006F623C"
-            BuildableName = "__TESTING__.app"
-            BlueprintName = "__TESTING__"
+            BlueprintIdentifier = "1876FE1417AE46B60025A4E2"
+            BuildableName = "__TESTING__Beta.app"
+            BlueprintName = "__TESTING__Beta"
             ReferencedContainer = "container:__TESTING__.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
-      <LocationScenarioReference
-         identifier = "Moscow, Russia"
-         referenceType = "1">
-      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Beta"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1867C780168B1EA6006F623C"
-            BuildableName = "__TESTING__.app"
-            BlueprintName = "__TESTING__"
+            BlueprintIdentifier = "1876FE1417AE46B60025A4E2"
+            BuildableName = "__TESTING__Beta.app"
+            BlueprintName = "__TESTING__Beta"
             ReferencedContainer = "container:__TESTING__.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

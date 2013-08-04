@@ -3,11 +3,6 @@
 
 extern int const ddLogLevel;
 
-#define k__CLASS__PREFIX__UDPushToken @"__CLASS__PREFIX__PushToken"
-#define k__CLASS__PREFIX__KeychainServiceName @"__PACKAGE__"
-#define k__CLASS__PREFIX__UDDeviceId @"__CLASS__PREFIX__UDDeviceId"
-#define k__CLASS__PREFIX__UDDeviceRegistered @"__CLASS__PREFIX__UDDeviceRegistered"
-
 /**
 * TestFlight
 */
@@ -27,16 +22,6 @@ extern int const ddLogLevel;
 #define k__CLASS__PREFIX__HockeyAppApiKeyLive @""
 
 /**
-* ShareKit
-*/
-#define k__CLASS__PREFIX__SHKAppName NSLocalizedString(@"__TESTING__", @"")
-#warning Set real url
-#define k__CLASS__PREFIX__SHKAppUrl @""
-#warning Set real FB id here, in FacebookAppID key in .plist file and in URL Schemes
-#define k__CLASS__PREFIX__SHKFacebookAppId @""
-#define k__CLASS__PREFIX__SHKVkontakteAppId @""
-
-/**
 * Notifications
 */
 
@@ -45,7 +30,6 @@ extern int const ddLogLevel;
 #define k__CLASS__PREFIX__SplashScreenJobDoneNotification @"k__CLASS__PREFIX__SplashScreenJobDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification @"k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenFinished @"k__CLASS__PREFIX__SplashScreenFinished"
-#define k__CLASS__PREFIX__UnauthorizedNotification @"k__CLASS__PREFIX__UnauthorizedNotification"
 
 /**
 * Rest API Configuration

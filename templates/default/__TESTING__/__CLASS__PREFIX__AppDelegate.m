@@ -1,41 +1,40 @@
 #import "__CLASS__PREFIX__AppDelegate.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
-#import "VPPLocationController.h"
 #import "__CLASS__PREFIX__RegistrationHelper.h"
 #import "UIScreen+EXScreen.h"
 #import "UIViewController+EXStoryBoard.h"
 #import "NSDate+SSToolkitAdditions.h"
-#import "DefaultSHKConfigurator.h"
-#import "__CLASS__PREFIX__SHKConfigurator.h"
-#import "SHKConfiguration.h"
-#import "SHK.h"
-#import "SHKFacebook.h"
 #import "AJNotificationView.h"
 #import "Appirater.h"
 #import "NSString+SSToolkitAdditions.h"
 #import "__CLASS__PREFIX__RestAPI.h"
 #import "NSDate+EXTimeZone.h"
-//include JIRA and HockeyApp only for Beta and AppStore releases
+
+//include HockeyApp only for Beta and AppStore releases
 #ifndef LOCAL
     #import "BITHockeyManager.h"
-    #import "JMC.h"
 #endif
+
 //include only for development builds
 #ifdef LOCAL
-#import <OHHTTPStubs/OHHTTPStubs.h>
+    #import <OHHTTPStubs/OHHTTPStubs.h>
 #endif
+
 //include only for Beta releases
 #ifdef BETA
     #import "TestFlight.h"
 #endif
+
 //include only for AppStore releases
 #ifdef RELEASE
     #import "Flurry.h"
 #endif
+
 #ifdef DEBUG
-#import <SparkInspector/SparkInspector.h>
+    #import <SparkInspector/SparkInspector.h>
 #endif
+
 #if RUN_KIF_TESTS
     #import__CLASS__PREFIX__TestControllerstController.h"
 #endif
@@ -44,15 +43,9 @@
 * Global logging level
 */
 #ifdef DEBUG
-int const ddLogLevel = LOG_LEVEL_VERBOSE;
+    int const ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
     int const ddLogLevel = LOG_LEVEL_WARN;
-#endif
-
-#ifdef RELEASE
-    void flurryUncaughtExceptionHandler(NSException *exception) {
-        [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
-    }
 #endif
 
 @interface __CLASS__PREFIX__AppDelegate ()
@@ -73,6 +66,8 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)initAppearance;
 
 - (void)handleLocalNotification:(UILocalNotification *)notification;
+
+- (void)registerPushId;
 
 - (void)runSplashScreenJobs;
 
@@ -97,6 +92,7 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
 */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initPush];
     [self initLoggers];
     [self initLocation];
     [self initNetwork];
@@ -114,8 +110,6 @@ int const ddLogLevel = LOG_LEVEL_VERBOSE;
     [self.window makeKeyAndVisible];
 
     [self showSplashScreen];
-
-    [self initPush];
 
 #if RUN_KIF_TESTS
     [[__CLASS__PREFIX__TestController sharedInstance] startTestingWithCompletionBlock:^{
@@ -162,7 +156,6 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     DDLogInfo(@"applicationDidBecomeActive");
-    [SHKFacebook handleDidBecomeActive];
 }
 
 /**
@@ -172,7 +165,6 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 {
     DDLogInfo(@"applicationWillTerminate");
     [MagicalRecord cleanUp];
-    [SHKFacebook handleWillTerminate];
 }
 
 #pragma mark - Urls
@@ -185,11 +177,7 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSString *scheme = [url scheme];
-    NSString *prefix = [NSString stringWithFormat:@"fb%@", SHKCONFIG(facebookAppId)];
-    if ([scheme hasPrefix:prefix])
-        return [SHKFacebook handleOpenURL:url];
-    return YES;
+    return NO;
 }
 
 
@@ -250,18 +238,6 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 #endif
 
 #ifndef LOCAL
-    JMCOptions *options = [JMCOptions optionsWithUrl:k__CLASS__PREFIX__JIRAHost
-                                          projectKey:k__CLASS__PREFIX__JIRAProject
-                                              apiKey:k__CLASS__PREFIX__JIRAApiKey
-                                              photos:YES
-                                               voice:NO
-                                            location:YES
-                                      crashReporting:NO
-                                       notifications:YES
-                                        customFields:nil];
-
-    [[JMC sharedInstance] configureWithOptions:options];
-
     [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyBeta liveIdentifier:k__CLASS__PREFIX__HockeyAppApiKeyLive delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
 #endif
@@ -273,6 +249,8 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 */
 - (void)initPush
 {
+    DDLogInfo(@"%@", THIS_METHOD);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceRegistered:) name:k__CLASS__PREFIX__DeviceRegisteredNotification object:nil];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 }
 
@@ -283,10 +261,20 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 */
 - (void)initLocation
 {
-    [VPPLocationController sharedInstance].desiredLocationAccuracy = kCLLocationAccuracyBest;
-    [VPPLocationController sharedInstance].distanceFilter = 5.0;
-    [VPPLocationController sharedInstance].headingFilter = 30.0;
-    [VPPLocationController sharedInstance].shouldRejectRepeatedLocations = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdate:) name:EXLocationManagerDidUpdateToLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationError:) name:EXLocationManagerDidFailWithErrorNotification object:nil];
+
+    [EXLocationManager sharedInstance].desiredLocationAccuracy = kCLLocationAccuracyThreeKilometers;
+    [EXLocationManager sharedInstance].distanceFilter = 100.0;
+    [EXLocationManager sharedInstance].headingFilter = 50.0;
+    [EXLocationManager sharedInstance].shouldRejectRepeatedLocations = YES;
+
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+        [[EXLocationManager sharedInstance] stopMonitoringSignificantLocationChanges];
+    }
+
+    self.turnOnSignificantLocation = NO;
+    self.locationDenied = NO;
 }
 
 /**
@@ -326,6 +314,8 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 */
 - (void)initAuth
 {
+    [__CLASS__PREFIX__RegistrationHelper setDeviceRegistered:NO];
+
     //load auth token from keychain to cache
     [__CLASS__PREFIX__RegistrationHelper authToken];
 
@@ -334,6 +324,7 @@ __CLASS__PREFIX__TestControllerfailureCount]);
     if (deviceId == nil) {
         [__CLASS__PREFIX__RegistrationHelper setDeviceId:[NSString stringWithUUID]];
     }
+    DDLogInfo(@"deviceId: %@", deviceId);
 
     [[__CLASS__PREFIX__RegistrationHelper sharedInstance] startObserving];
 }
@@ -343,11 +334,6 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 */
 - (void)initServices
 {
-    //setup ShareKit
-    DefaultSHKConfigurator *configurator = [[__CLASS__PREFIX__SHKConfigurator alloc] init];
-    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
-    [SHK flushOfflineQueue];
-
     //setup Appirater
     #warning Set real app id
     [Appirater setAppId:@""];
@@ -378,6 +364,8 @@ __CLASS__PREFIX__TestControllerfailureCount]);
     [__CLASS__PREFIX__RegistrationHelper setPushToken:pushToken];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
+    
+    [self registerPushId];
 }
 
 /** Called if app has failed to register for remote notifications
@@ -390,7 +378,6 @@ __CLASS__PREFIX__TestControllerfailureCount]);
         [__CLASS__PREFIX__RegistrationHelper setPushToken:[NSString stringWithUUID]];
     }
 #endif
-    [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
 }
 
 /** Called if app is active when the notification comes in
@@ -416,9 +403,9 @@ __CLASS__PREFIX__TestControllerfailureCount]);
 {
     DDLogInfo(@"Processing remote notification: %@", data);
 
-    if (data[@"t"] && [(NSString *)data[@"type"] isEqualToString:@"sh"] && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+    if (data[@"t"] && [(NSString *)data[@"t"] isEqualToString:@"sh"] && [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         [AJNotificationView showNoticeInView:self.window
-                                        type:AJNotificationTypeBlue
+                                        type:AJNotificationTypeWhite
                                        title:data[@"aps"][@"alert"]
                              linedBackground:AJLinedBackgroundTypeDisabled
                                    hideAfter:2.5f];
@@ -430,6 +417,24 @@ __CLASS__PREFIX__TestControllerfailureCount]);
     DDLogInfo(@"Processing local notification: %@", notification);
 
     NSDictionary *data = notification.userInfo;
+}
+
+- (void)onDeviceRegistered:(NSNotification *)notification {
+    DDLogInfo(@"%@", THIS_METHOD);
+
+    [self registerPushId];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:k__CLASS_PREFIX__DeviceRegisteredNotification object:nil];
+}
+
+- (void)registerPushId {
+    if (![[__CLASS_PREFIX__RegistrationHelper pushToken] stringIsEmpty]) {
+        [[__CLASS_PREFIX__RestAPI sharedInstance] registerPushToken:[__CLASS_PREFIX__RegistrationHelper pushToken] success:^(AFHTTPRequestOperation *operation, id o) {
+            DDLogInfo(@"registerPushToken success");
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            DDLogError(@"registerPushToken failed");
+        } owner:self];
+    }
 }
 
 #pragma mark - Splash screen
@@ -454,13 +459,12 @@ __CLASS__PREFIX__TestControllerfailureCount]);
     [self.window addSubview:self.splashScreenView];
     [self.window bringSubviewToFront:self.splashScreenView];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSplashScreenJobs) name:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
+    [self runSplashScreenJobs];
 }
 
 - (void)hideSplashScreen
 {
     DDLogInfo(@"hideSplashScreen");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:k__CLASS__PREFIX__RegisteredForRemoteNotifications object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification object:nil];
 
@@ -491,6 +495,7 @@ __CLASS__PREFIX__TestControllerfailureCount]);
     {
         DDLogInfo(@"Register device finished");
         [__CLASS__PREFIX__RegistrationHelper setDeviceRegistered:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__DeviceRegisteredNotification object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:k__CLASS__PREFIX__SplashScreenJobDoneNotification object:nil];
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
