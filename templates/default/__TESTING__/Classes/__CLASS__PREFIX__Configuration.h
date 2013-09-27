@@ -30,6 +30,7 @@ extern int const ddLogLevel;
 #define k__CLASS__PREFIX__SplashScreenJobDoneNotification @"k__CLASS__PREFIX__SplashScreenJobDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification @"k__CLASS__PREFIX__SplashScreenAllJobsDoneNotification"
 #define k__CLASS__PREFIX__SplashScreenFinished @"k__CLASS__PREFIX__SplashScreenFinished"
+#define k__CLASS__PREFIX__DeviceRegisteredNotification @"k__CLASS__PREFIX__DeviceRegisteredNotification"
 
 /**
 * Rest API Configuration

@@ -1,0 +1,47 @@
+#in-app notifications
+pod 'AJNotificationView'
+
+#modal picker and date picker controllers
+pod 'EXModalDatePicker', :git => 'https://github.com/exister/EXModalDatePicker.git'
+
+#grid layout
+pod 'GMGridView'
+
+#plural strings
+pod 'TTTLocalizedPluralString'
+
+#check for new version
+pod 'iVersion', :podspec => 'iVersion.podspec'
+
+#labels formatting
+pod 'OHAttributedLabel'
+
+#map with pin clustering
+pod 'OCMapView' 
+
+#social sharing
+pod 'GPActivityViewController', :git => 'https://github.com/exister/GPActivityViewController.git', :tag => '1.1.3'
+
+#yandex geocoder integration
+pod 'YandexGeocoder', :git => 'https://github.com/exister/YandexGeocoder.git'
+
+#sidebar with search
+pod 'GHSidebarNav', :podspec => 'GHSidebarNav.podspec'
+
+#custom map view popup
+pod 'SMCalloutView'
+
+#ios7 style switch
+pod 'KLSwitch'
+
+#dropdown menu
+pod 'REMenu'
+
+#rate this app
+pod 'Appirater', :git => 'https://github.com/arashpayan/appirater.git'
+
+#core data
+pod 'MagicalRecord'
+
+#form validation
+pod 'US2FormValidator'

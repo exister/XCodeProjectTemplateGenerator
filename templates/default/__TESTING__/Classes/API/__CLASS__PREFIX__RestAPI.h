@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EXRestAPI.h"
 
 @interface __CLASS__PREFIX__RestAPI : EXRestAPI
 

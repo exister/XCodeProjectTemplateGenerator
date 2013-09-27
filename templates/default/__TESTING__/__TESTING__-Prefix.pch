@@ -5,7 +5,7 @@
 #import <Availability.h>
 
 #ifndef __IPHONE_5_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
+    #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
@@ -22,6 +22,5 @@
     #import <QuartzCore/QuartzCore.h>
     #import "__CLASS__PREFIX__Configuration.h"
     #import "__CLASS__PREFIX__RestAPI.h"
-    #import "CoreData+MagicalRecord.h"
     #import "DDLog.h"
 #endif

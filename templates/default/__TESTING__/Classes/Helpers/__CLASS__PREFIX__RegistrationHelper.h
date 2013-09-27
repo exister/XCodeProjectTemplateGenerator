@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EXRegistrationHelper.h"
 
 @interface __CLASS__PREFIX__RegistrationHelper : EXRegistrationHelper
 
