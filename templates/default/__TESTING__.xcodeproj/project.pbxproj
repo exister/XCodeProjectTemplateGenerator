@@ -50,12 +50,6 @@
 		18BCEF2017AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BCEF1E17AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m */; };
 		18BCEF2117AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BCEF1E17AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m */; };
 		7B676E89BF154D47BABD68B6 /* libPods-__TESTING__Beta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CBB643C0E744398D4A2CCC /* libPods-__TESTING__Beta.a */; };
-		8FD4C03B66D2810B170F1230 /* EXAppDelegateLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C410AAED678DD362DDF7 /* EXAppDelegateLocationManager.m */; };
-		8FD4C47A04E87EC366CFB17C /* EXBaseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CFFA11600B3E9CBDEC31 /* EXBaseAppDelegate.m */; };
-		8FD4C55733F529CCB5AB214B /* EXAppDelegateLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C410AAED678DD362DDF7 /* EXAppDelegateLocationManager.m */; };
-		8FD4C66DCA7DD7F8E503798F /* EXBaseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CFFA11600B3E9CBDEC31 /* EXBaseAppDelegate.m */; };
-		8FD4C7855012D4D17364E075 /* EXAppDelegateLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4C410AAED678DD362DDF7 /* EXAppDelegateLocationManager.m */; };
-		8FD4C981EF7DCA9726335C4A /* EXBaseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD4CFFA11600B3E9CBDEC31 /* EXBaseAppDelegate.m */; };
 		93083078DF4140C1BDC2B7EF /* libPods-__TESTING__Release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2AB2F8D6CF4ECDB061A9E0 /* libPods-__TESTING__Release.a */; };
 		9D492CB2645548FCADC00AF3 /* libPods-__TESTING__Local.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2BF4DD836440C593AF7C45 /* libPods-__TESTING__Local.a */; };
 /* End PBXBuildFile section */
@@ -98,10 +92,6 @@
 		2B19CA0942C74B0BBB533F47 /* Pods-__TESTING__Beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__TESTING__Beta.xcconfig"; path = "Pods/Pods-__TESTING__Beta.xcconfig"; sourceTree = "<group>"; };
 		599E4B60FC4246FA8724331B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2BF4DD836440C593AF7C45 /* libPods-__TESTING__Local.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-__TESTING__Local.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FD4C1E3E6A1AF094F0A8B7F /* EXAppDelegateLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXAppDelegateLocationManager.h; path = Classes/BaseClasses/EXAppDelegateLocationManager.h; sourceTree = "<group>"; };
-		8FD4C410AAED678DD362DDF7 /* EXAppDelegateLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXAppDelegateLocationManager.m; path = Classes/BaseClasses/EXAppDelegateLocationManager.m; sourceTree = "<group>"; };
-		8FD4C5AD214771B9CB3DCEFB /* EXBaseAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXBaseAppDelegate.h; path = Classes/BaseClasses/EXBaseAppDelegate.h; sourceTree = "<group>"; };
-		8FD4CFFA11600B3E9CBDEC31 /* EXBaseAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXBaseAppDelegate.m; path = Classes/BaseClasses/EXBaseAppDelegate.m; sourceTree = "<group>"; };
 		934A127C20BA476E9CFA5983 /* Pods-__TESTING__Release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__TESTING__Release.xcconfig"; path = "Pods/Pods-__TESTING__Release.xcconfig"; sourceTree = "<group>"; };
 		CA2AB2F8D6CF4ECDB061A9E0 /* libPods-__TESTING__Release.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-__TESTING__Release.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F3B2893F9D454F8DCA8AC2 /* Pods-__TESTING__Local.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__TESTING__Local.xcconfig"; path = "Pods/Pods-__TESTING__Local.xcconfig"; sourceTree = "<group>"; };
@@ -190,7 +180,6 @@
 		1867C78B168B1EA6006F623C /* __TESTING__ */ = {
 			isa = PBXGroup;
 			children = (
-				18DA825D168C4F7D007F507A /* BaseClasses */,
 				8FD4CF3A646BFD995D92B4F4 /* API */,
 				8FD4C8CDD53235DD4B0EE895 /* Helpers */,
 				8FD4C86B1CF4A3921BCC01B9 /* Resources */,
@@ -247,17 +236,6 @@
 				1867C79B168B1EA9006F623C /* Default-568h@2x.png */,
 			);
 			name = Default.png;
-			sourceTree = "<group>";
-		};
-		18DA825D168C4F7D007F507A /* BaseClasses */ = {
-			isa = PBXGroup;
-			children = (
-				8FD4C5AD214771B9CB3DCEFB /* EXBaseAppDelegate.h */,
-				8FD4CFFA11600B3E9CBDEC31 /* EXBaseAppDelegate.m */,
-				8FD4C1E3E6A1AF094F0A8B7F /* EXAppDelegateLocationManager.h */,
-				8FD4C410AAED678DD362DDF7 /* EXAppDelegateLocationManager.m */,
-			);
-			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 		8FD4C509F745493C016F78BA /* Images */ = {
@@ -572,8 +550,6 @@
 				1867C7A2168B1EA9006F623C /* __CLASS__PREFIX__ViewController.m in Sources */,
 				18BCEF1A17AE5ABE003B22B2 /* __CLASS__PREFIX__RegistrationHelper.m in Sources */,
 				18BCEF1F17AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m in Sources */,
-				8FD4C47A04E87EC366CFB17C /* EXBaseAppDelegate.m in Sources */,
-				8FD4C03B66D2810B170F1230 /* EXAppDelegateLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,8 +562,6 @@
 				1876FDE117AE46470025A4E2 /* __CLASS__PREFIX__ViewController.m in Sources */,
 				18BCEF1B17AE5ABE003B22B2 /* __CLASS__PREFIX__RegistrationHelper.m in Sources */,
 				18BCEF2017AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m in Sources */,
-				8FD4C981EF7DCA9726335C4A /* EXBaseAppDelegate.m in Sources */,
-				8FD4C7855012D4D17364E075 /* EXAppDelegateLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,8 +574,6 @@
 				1876FE1817AE46B60025A4E2 /* __CLASS__PREFIX__ViewController.m in Sources */,
 				18BCEF1C17AE5ABE003B22B2 /* __CLASS__PREFIX__RegistrationHelper.m in Sources */,
 				18BCEF2117AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.m in Sources */,
-				8FD4C66DCA7DD7F8E503798F /* EXBaseAppDelegate.m in Sources */,
-				8FD4C55733F529CCB5AB214B /* EXAppDelegateLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

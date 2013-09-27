@@ -1,4 +1,4 @@
-platform :ios, '5.0'
+platform :ios, '6.1'
 
 target :__TESTING__Local, :exclusive => true do
 	pod 'AFNetworking', '~> 1.3.0'
@@ -7,7 +7,7 @@ target :__TESTING__Local, :exclusive => true do
 	pod 'SSToolkit'
 	pod 'SSKeychain'
 	pod 'SVPullToRefresh'
-	pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git'
+	pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
 	pod 'SDWebImage'
 	pod 'DAKeyboardControl'
 	pod 'CocoaLumberjack'
@@ -27,7 +27,7 @@ target :__TESTING__Release, :exclusive => true do
     pod 'SSToolkit'
     pod 'SSKeychain'
     pod 'SVPullToRefresh'
-    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git'
+    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
     pod 'SDWebImage'
     pod 'DAKeyboardControl'
     pod 'CocoaLumberjack'
@@ -46,7 +46,7 @@ target :__TESTING__Beta, :exclusive => true do
     pod 'SSToolkit'
     pod 'SSKeychain'
     pod 'SVPullToRefresh'
-    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git'
+    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
     pod 'SDWebImage'
     pod 'DAKeyboardControl'
     pod 'CocoaLumberjack'
