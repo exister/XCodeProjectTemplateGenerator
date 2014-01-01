@@ -73,17 +73,11 @@
 		1867C7A0168B1EA9006F623C /* __CLASS__PREFIX__ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__ViewController.h; sourceTree = "<group>"; };
 		1867C7A1168B1EA9006F623C /* __CLASS__PREFIX__ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__ViewController.m; sourceTree = "<group>"; };
 		1867C7A9168B1EA9006F623C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		1867C7C5168B1F73006F623C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		1867C7C6168B1F73006F623C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1867C800168B25C6006F623C /* __TESTING__Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "__TESTING__Local-Info.plist"; sourceTree = "<group>"; };
 		1867C816168B2622006F623C /* __TESTING__Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "__TESTING__Beta-Info.plist"; sourceTree = "<group>"; };
 		1876FE1117AE46470025A4E2 /* __TESTING__Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = __TESTING__Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1876FE4817AE46B60025A4E2 /* __TESTING__Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = __TESTING__Beta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18880148168D97700086CD1A /* generate_documentation.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = generate_documentation.sh; sourceTree = SOURCE_ROOT; };
-		188B4C65178EDC2800AA8A54 /* KIFTestStep+__CLASS__PREFIX__Steps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestStep+__CLASS__PREFIX__Steps.h"; sourceTree = "<group>"; };
-		188B4C66178EDC2800AA8A54 /* KIFTestStep+__CLASS__PREFIX__Steps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestStep+__CLASS__PREFIX__Steps.m"; sourceTree = "<group>"; };
-		188B4C67178EDC2800AA8A54 /* __CLASS__PREFIX__TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__TestController.h; sourceTree = "<group>"; };
-		188B4C68178EDC2800AA8A54 /* __CLASS__PREFIX__TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__TestController.m; sourceTree = "<group>"; };
 		18BCEF1817AE5ABE003B22B2 /* __CLASS__PREFIX__RegistrationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__RegistrationHelper.h; sourceTree = "<group>"; };
 		18BCEF1917AE5ABE003B22B2 /* __CLASS__PREFIX__RegistrationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = __CLASS__PREFIX__RegistrationHelper.m; sourceTree = "<group>"; };
 		18BCEF1D17AE5B46003B22B2 /* __CLASS__PREFIX__RestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __CLASS__PREFIX__RestAPI.h; sourceTree = "<group>"; };
@@ -142,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				1867C78B168B1EA6006F623C /* __TESTING__ */,
-				1867C7AF168B1EA9006F623C /* __TESTING__Tests */,
 				1867C784168B1EA6006F623C /* Frameworks */,
 				1867C782168B1EA6006F623C /* Products */,
 				2B19CA0942C74B0BBB533F47 /* Pods-__TESTING__Beta.xcconfig */,
@@ -205,17 +198,6 @@
 				18DA8251168C2E2F007F507A /* __CLASS__PREFIX__Configuration.h */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1867C7AF168B1EA9006F623C /* __TESTING__Tests */ = {
-			isa = PBXGroup;
-			children = (
-				188B4C65178EDC2800AA8A54 /* KIFTestStep+__CLASS__PREFIX__Steps.h */,
-				188B4C66178EDC2800AA8A54 /* KIFTestStep+__CLASS__PREFIX__Steps.m */,
-				188B4C67178EDC2800AA8A54 /* __CLASS__PREFIX__TestController.h */,
-				188B4C68178EDC2800AA8A54 /* __CLASS__PREFIX__TestController.m */,
-			);
-			path = __TESTING__Tests;
 			sourceTree = "<group>";
 		};
 		18BCEEE917AE4FAA003B22B2 /* Info.plists */ = {
@@ -304,7 +286,6 @@
 				1876FDDE17AE46470025A4E2 /* Sources */,
 				1876FDFC17AE46470025A4E2 /* Frameworks */,
 				1876FE0117AE46470025A4E2 /* Resources */,
-				1876FE0C17AE46470025A4E2 /* Generate documentation */,
 				792CF694EF6542898A9AA525 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -324,7 +305,6 @@
 				1876FE1517AE46B60025A4E2 /* Sources */,
 				1876FE3317AE46B60025A4E2 /* Frameworks */,
 				1876FE3817AE46B60025A4E2 /* Resources */,
-				1876FE4317AE46B60025A4E2 /* Generate documentation */,
 				0098337AD5EF4284B2E7FBAE /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -420,34 +400,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-__TESTING__Beta-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		1876FE0C17AE46470025A4E2 /* Generate documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/generate_documentation.sh\"";
-		};
-		1876FE4317AE46B60025A4E2 /* Generate documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/generate_documentation.sh\"";
 		};
 		18880146168D972B0086CD1A /* Generate documentation */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -584,7 +536,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1867C78F168B1EA6006F623C /* en */,
-				1867C7C6168B1F73006F623C /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -593,7 +544,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1867C79E168B1EA9006F623C /* en */,
-				1867C7C5168B1F73006F623C /* ru */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
