@@ -1,59 +1,37 @@
 platform :ios, '6.1'
 
+def common_pods
+    pod 'AFNetworking',
+    pod 'Reachability'
+    pod 'MBProgressHUD'
+    pod 'SSToolkit'
+    pod 'SSKeychain'
+    pod 'SVPullToRefresh'
+    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.16'
+    pod 'SDWebImage'
+    pod 'DAKeyboardControl'
+    pod 'CocoaLumberjack'
+    pod 'HockeySDK', :podspec => 'Specs/HockeySDK.podspec'
+    pod 'DB5', :git => 'https://github.com/exister/DB5.git'
+    pod 'TMCache'
+    pod 'UITableView-NXEmptyView'
+end
+
 target :__TESTING__Local, :exclusive => true do
-	pod 'AFNetworking', '~> 1.3.0'
-	pod 'Reachability'
-	pod 'MBProgressHUD'
-	pod 'SSToolkit'
-	pod 'SSKeychain'
-	pod 'SVPullToRefresh'
-	pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
-	pod 'SDWebImage'
-	pod 'DAKeyboardControl'
-	pod 'CocoaLumberjack'
-	pod 'HockeySDK', :podspec => 'Specs/HockeySDK.podspec'
-	pod 'DB5', :git => 'https://github.com/exister/DB5.git'
-	pod 'TMCache'
-	pod 'UITableView-NXEmptyView'
-##########################################################
+	common_pods
+
     pod 'Reveal-iOS-SDK'
     pod 'OHHTTPStubs'
 end
 
 target :__TESTING__Release, :exclusive => true do
-	pod 'AFNetworking', '~> 1.3.0'
-    pod 'Reachability'
-    pod 'MBProgressHUD'
-    pod 'SSToolkit'
-    pod 'SSKeychain'
-    pod 'SVPullToRefresh'
-    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
-    pod 'SDWebImage'
-    pod 'DAKeyboardControl'
-    pod 'CocoaLumberjack'
-    pod 'HockeySDK', :podspec => 'Specs/HockeySDK.podspec'
-    pod 'DB5', :git => 'https://github.com/exister/DB5.git'
-    pod 'TMCache'
-    pod 'UITableView-NXEmptyView'
-##########################################################
+	common_pods
+
     pod 'FlurrySDK'
 end
 
 target :__TESTING__Beta, :exclusive => true do
-	pod 'AFNetworking', '~> 1.3.0'
-    pod 'Reachability'
-    pod 'MBProgressHUD'
-    pod 'SSToolkit'
-    pod 'SSKeychain'
-    pod 'SVPullToRefresh'
-    pod 'EXHelpers', :git => 'https://github.com/exister/EXHelpers.git', :tag => '0.0.8'
-    pod 'SDWebImage'
-    pod 'DAKeyboardControl'
-    pod 'CocoaLumberjack'
-    pod 'HockeySDK', :podspec => 'Specs/HockeySDK.podspec'
-    pod 'DB5', :git => 'https://github.com/exister/DB5.git'
-    pod 'TMCache'
-    pod 'UITableView-NXEmptyView'
-##########################################################
+	common_pods
+    
     pod 'TestFlightSDK'
 end
