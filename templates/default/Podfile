@@ -1,7 +1,7 @@
 platform :ios, '6.1'
 
 def common_pods
-    pod 'AFNetworking',
+    pod 'AFNetworking'
     pod 'Reachability'
     pod 'MBProgressHUD'
     pod 'SSToolkit'
