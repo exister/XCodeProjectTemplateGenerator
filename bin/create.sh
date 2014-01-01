@@ -1,7 +1,8 @@
 #! /bin/sh
 
 set -e
-set -x
+#enable debugging output
+#set -x
 
 unset LANG
 
@@ -16,9 +17,40 @@ function usage() {
   exit 1
 }
 
-# check whether it is a proper create command (at least 3 arguments)
-if [ $# -lt 6 ]; then
-	usage
+function input_params() {
+  echo "Enter <template_name> (default): "
+  read TEMPLATE_NAME
+
+  echo "Enter <path_to_new_project> (~/path/to/project): "
+  read PROJECT_PATH
+
+  echo "Enter <package_name> (com.company.product): "
+  read PACKAGE
+
+  echo "Enter <project_name> (ProductName): "
+  read PROJECT_NAME
+
+  echo "Enter <class_prefix> (CP): "
+  read CLASS_PREFIX
+
+  echo "Enter <organization_name> (Company): "
+  read ORGANIZATION_NAME
+}
+
+# check whether it is a proper create command (6 or 0 arguments)
+if [ $# -eq 0 ]; then
+  input_params
+else
+  if [ $# -lt 6 ]; then
+    usage
+  else
+    TEMPLATE_NAME=$1
+    PROJECT_PATH=$2
+    PACKAGE=$3
+    PROJECT_NAME=$4
+    CLASS_PREFIX=$5
+    ORGANIZATION_NAME=$6
+  fi
 fi
 
 # the two lines below are to get the current folder, and resolve symlinks
@@ -30,13 +62,6 @@ done
 
 BINDIR=$( cd "$( dirname "$SCRIPT" )" && pwd )
 TEMPLATES_DIR="$BINDIR/../templates"
-
-TEMPLATE_NAME=$1
-PROJECT_PATH=$2
-PACKAGE=$3
-PROJECT_NAME=$4
-CLASS_PREFIX=$5
-ORGANIZATION_NAME=$6
 
 echo "Cloning $TEMPLATE_NAME to $PROJECT_PATH"
 echo "Creating project $PACKAGE $ORGANIZATION_NAME $PROJECT_NAME $CLASS_PREFIX"
